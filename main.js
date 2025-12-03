@@ -199,18 +199,18 @@ titulo.textContent = "Flores del Mar";
 app.appendChild(titulo);
 
 const subtituloFlores = document.createElement("h2");
-subtituloFlores.textContent = "Cada petalo es como una brisa y cada brisa como una caricia";
+subtituloFlores.textContent = "Por favor, complete los pasos en orden para poder generar su orden:";
 app.appendChild(subtituloFlores);
 
 const subtituloCompra = document.createElement("h3");
-subtituloCompra.textContent = "Por favor, seleccione las flores de su ramo:";
+subtituloCompra.textContent = "1)Seleccione la flor que desea para su ramo:";
 app.appendChild(subtituloCompra);
 
 const contenedorFlores = document.createElement("div");
 app.appendChild(contenedorFlores);
 flores.forEach(flor => {
     const botonSeleccionador = document.createElement("button");
-    botonSeleccionador.textContent = `${flor.nombre} ($${flor.precio})`;
+    botonSeleccionador.textContent = `${flor.nombre} ($${flor.precio} x unidad)`;
 
     botonSeleccionador.addEventListener("click", () => {
         florSeleccionada = flor;
@@ -219,3 +219,17 @@ flores.forEach(flor => {
 
     contenedorFlores.appendChild(botonSeleccionador);
 });
+
+
+const subtituloRamo = document.createElement("h3");
+subtituloRamo.textContent = "2)Indique que ramo desea armar:";
+app.appendChild(subtituloRamo);
+
+const btnMedia = document.createElement("button");
+btnMedia.textContent = "Media docena (6) ";
+
+const btnDocena = document.createElement("button");
+btnDocena.textContent = "Docena (12) ";
+
+app.appendChild(btnMedia);
+app.appendChild(btnDocena);

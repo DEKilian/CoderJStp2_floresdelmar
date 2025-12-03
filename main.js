@@ -2,31 +2,31 @@ const flores = [
 
     {
         id : 1,
-        nombre: "rosa",
+        nombre: "Rosas",
         precio: 1200
     },
 
     { 
         id: 2,
-        nombre: "tulipan",
+        nombre: "Tulipanes",
         precio: 1500
     },
 
     {
         id: 3,
-        nombre: "fresia",
+        nombre: "Fresias",
         precio: 800
     },
 
     {   
         id:4,
-        nombre: "margarita",
+        nombre: "Margaritas",
         precio: 1100
     },
 
     {   
         id: 5,
-        nombre: "clavel",
+        nombre: "Claveles",
         precio: 1000
     }
 ];

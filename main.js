@@ -31,34 +31,34 @@ const flores = [
     }
 ];
 
-const cupones = [
+// const cupones = [
 
-    {
-        id: 1,
-        cupon: "brisa",
-        descuento: 5
-    },
+//     {
+//         id: 1,
+//         cupon: "brisa",
+//         descuento: 5
+//     },
 
-    {
-        id: 1,
-        cupon: "florero",
-        descuento: 10
-    },
+//     {
+//         id: 1,
+//         cupon: "florero",
+//         descuento: 10
+//     },
     
-    {
-        id: 1,
-        cupon: "oculto",
-        descuento: 25
-    }
-];
+//     {
+//         id: 1,
+//         cupon: "oculto",
+//         descuento: 25
+//     }
+// ];
 
 const mediadocena = (num1) => num1 * 6;
 const unadocena = (num1) => num1 * 12;
 const descuento = (num1, num2) => num1 - ((num1 * num2) / 100); 
  
-let total = 0;
+let total = Number(localStorage.getItem("total")) || 0;
 let subtotal= 0;
-
+let florSeleccionada = null;
 // continuar = true;
 // let saludo = confirm ("Bienvenido/a a Flores del Mar. Donde decir te amo nunca fue tan facil")
 // do {
@@ -194,6 +194,15 @@ let subtotal= 0;
 
 const app = document.getElementById("app");
 
+function mostrarMensaje(texto) {
+    mensaje.textContent = texto;
+}
+
+function actualizarTotal() {
+    inputTotal.value = total;
+    localStorage.setItem("total", total)
+};
+
 const titulo = document.createElement("h1");
 titulo.textContent = "Flores del Mar";
 app.appendChild(titulo);
@@ -227,9 +236,61 @@ app.appendChild(subtituloRamo);
 
 const btnMedia = document.createElement("button");
 btnMedia.textContent = "Media docena (6) ";
+btnMedia.addEventListener("click", () => {
+    if (!florSeleccionada) {
+        mostrarMensaje("Debes seleccionar una flor primero.");
+        return;
+    }
+
+    const subtotal = mediadocena(florSeleccionada.precio);
+    total += subtotal;
+    actualizarTotal();
+
+    mostrarMensaje(`Agregaste media docena de ${florSeleccionada.nombre}. Subtotal: $${subtotal}`);
+});
+app.appendChild(btnMedia);
 
 const btnDocena = document.createElement("button");
 btnDocena.textContent = "Docena (12) ";
+btnDocena.addEventListener("click", () => {
+    if (!florSeleccionada) {
+        mostrarMensaje("Debes seleccionar una flor primero.");
+        return;
+    }
 
-app.appendChild(btnMedia);
+    const subtotal = unadocena(florSeleccionada.precio);
+    total += subtotal;
+    actualizarTotal();
+
+    mostrarMensaje(`Agregaste una docena de ${florSeleccionada.nombre}. Subtotal: $${subtotal}`);
+});
+
 app.appendChild(btnDocena);
+
+
+
+const totalActual = document.createElement("h3");
+totalActual.textContent = "Total actual:";
+app.appendChild(totalActual);
+
+const inputTotal = document.createElement("input");
+inputTotal.type = "text";
+inputTotal.readOnly = true;
+inputTotal.value = total;
+
+const mensaje = document.createElement("p");
+app.appendChild(mensaje);
+
+app.appendChild(inputTotal);
+
+
+const btnReiniciar = document.createElement ("button");
+btnReiniciar.textContent = "Reiniciar carrito"
+
+btnReiniciar.addEventListener("click", () => {
+    total = 0;
+    localStorage.setItem("total", 0);
+    actualizarTotal();
+});
+
+app.appendChild(btnReiniciar);

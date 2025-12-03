@@ -199,9 +199,23 @@ titulo.textContent = "Flores del Mar";
 app.appendChild(titulo);
 
 const subtituloFlores = document.createElement("h2");
-subtituloFlores.textContent = "Cada petalo es como una brisa ligera que dice te amo :)";
+subtituloFlores.textContent = "Cada petalo es como una brisa y cada brisa como una caricia";
 app.appendChild(subtituloFlores);
 
 const subtituloCompra = document.createElement("h3");
 subtituloCompra.textContent = "Por favor, seleccione las flores de su ramo:";
 app.appendChild(subtituloCompra);
+
+const contenedorFlores = document.createElement("div");
+app.appendChild(contenedorFlores);
+flores.forEach(flor => {
+    const botonSeleccionador = document.createElement("button");
+    botonSeleccionador.textContent = `${flor.nombre} ($${flor.precio})`;
+
+    botonSeleccionador.addEventListener("click", () => {
+        florSeleccionada = flor;
+        mostrarMensaje(`${flor.nombre}`);
+    });
+
+    contenedorFlores.appendChild(botonSeleccionador);
+});

@@ -34,10 +34,8 @@ const flores = [
 
 const mediadocena = (num1) => num1 * 6;
 const unadocena = (num1) => num1 * 12;
-const descuento = (num1, num2) => num1 - ((num1 * num2) / 100); 
  
 let total = Number(localStorage.getItem("total")) || 0;
-let subtotal= 0;
 let florSeleccionada = null;
 
 

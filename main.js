@@ -57,7 +57,7 @@ titulo.textContent = "Flores del Mar";
 app.appendChild(titulo);
 
 const subtituloFlores = document.createElement("h2");
-subtituloFlores.textContent = "Por favor, complete los pasos en orden para poder generar su orden:";
+subtituloFlores.textContent = "Por favor, complete los pasos en orden para poder generar su pedido:";
 app.appendChild(subtituloFlores);
 
 const subtituloCompra = document.createElement("h3");
@@ -87,7 +87,7 @@ const btnMedia = document.createElement("button");
 btnMedia.textContent = "Media docena (6) ";
 btnMedia.addEventListener("click", () => {
     if (!florSeleccionada) {
-        mostrarMensaje("Debes seleccionar una flor primero.");
+        mostrarMensaje("No ha seleccionado ninguna flor. Por favor, seleccione que flor desea y luego que tipo de ramo.");
         return;
     }
 
